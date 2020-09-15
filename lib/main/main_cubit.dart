@@ -19,9 +19,11 @@ class MainCubit extends Cubit<MainState> {
     if (result.isDenied) {
       print('user denied permission');
     } else if (result.isGranted) {
-      print('not denied ${result.runtimeType}');
+      print('granted!! ${result.runtimeType}');
       locationPermissionGranted = true;
       emit(MainLocationPermissionGranted());
+    } else {
+      print('unknown permission err');
     }
 
     // bool _serviceEnabled = await locationTracker.serviceEnabled();

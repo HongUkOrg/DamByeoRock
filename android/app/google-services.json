@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1054322781901",
+    "firebase_url": "https://wall-d4ab6.firebaseio.com",
+    "project_id": "wall-d4ab6",
+    "storage_bucket": "wall-d4ab6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054322781901:android:2320387456da542e084384",
+        "android_client_info": {
+          "package_name": "bleo.wall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054322781901-23do78nn0i5dnr68p6o3d546qtc4gamc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDikWBPpTBtZNZkDjZxCULxaafAyRR2kE0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054322781901-23do78nn0i5dnr68p6o3d546qtc4gamc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1054322781901-kj33m0662pe7kmq24uailfv575b0f13e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "bleo.wall"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

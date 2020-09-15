@@ -1,3 +1,11 @@
 # This is a generated file; do not edit or check into version control.
+cloud_firestore=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.14.0+2/
+cloud_firestore_web=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.2.0+1/
+firebase_core=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.5.0/
+firebase_core_web=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.2.0/
 flutter_plugin_android_lifecycle=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.9/
+geolocator=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-6.0.0+4/
 google_maps_flutter=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.32/
+location=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/location-3.0.2/
+location_web=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/location_web-1.0.0/
+permission_handler=/Users/bleo/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-5.0.1+1/

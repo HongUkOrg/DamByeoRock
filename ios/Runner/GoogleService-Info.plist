@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1054322781901-kj33m0662pe7kmq24uailfv575b0f13e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1054322781901-kj33m0662pe7kmq24uailfv575b0f13e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC8zLQVlp0tWStrZj5kxSnFUIwU_cu9v1s</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1054322781901</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>bleo.wall</string>
+	<key>PROJECT_ID</key>
+	<string>wall-d4ab6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wall-d4ab6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1054322781901:ios:5b9bdd1ec46d5d19084384</string>
+	<key>DATABASE_URL</key>
+	<string>https://wall-d4ab6.firebaseio.com</string>
+</dict>
+</plist>

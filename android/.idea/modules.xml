@@ -5,10 +5,30 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DamByuRock-android.iml" filepath="$PROJECT_DIR$/.idea/modules/DamByuRock-android.iml" group="android" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" group="android" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-app.iml" group="android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-343551556/android-cloud_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/-343551556/android-cloud_firestore.iml" group="android/cloud_firestore" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1891152893/android-firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/1891152893/android-firebase_core.iml" group="android/firebase_core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/android-permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/android-permission_handler.iml" group="android/permission_handler" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="android/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bleo-DamByuRock-android.iml" filepath="$PROJECT_DIR$/.idea/modules/bleo-DamByuRock-android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-343551556/cloud_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/-343551556/cloud_firestore.iml" group="android/cloud_firestore" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-343551556/cloud_firestore-0.14.0+2-android-cloud_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/-343551556/cloud_firestore-0.14.0+2-android-cloud_firestore.iml" group="android/cloud_firestore" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/com.baseflow.permissionhandler-permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/com.baseflow.permissionhandler-permission_handler.iml" group="android/permission_handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1891152893/firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/1891152893/firebase_core.iml" group="android/firebase_core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1891152893/firebase_core-0.5.0-android-firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/1891152893/firebase_core-0.5.0-android-firebase_core.iml" group="android/firebase_core" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1089670984/flutter_plugin_android_lifecycle.iml" filepath="$PROJECT_DIR$/.idea/modules/1089670984/flutter_plugin_android_lifecycle.iml" group="android/flutter_plugin_android_lifecycle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1658422913/geolocator.iml" filepath="$PROJECT_DIR$/.idea/modules/1658422913/geolocator.iml" group="android/geolocator" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1283966255/google_maps_flutter.iml" filepath="$PROJECT_DIR$/.idea/modules/1283966255/google_maps_flutter.iml" group="android/google_maps_flutter" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-343551556/io.flutter.plugins.firebase.cloudfirestore-cloud_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/-343551556/io.flutter.plugins.firebase.cloudfirestore-cloud_firestore.iml" group="android/cloud_firestore" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1891152893/io.flutter.plugins.firebase.core-firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/1891152893/io.flutter.plugins.firebase.core-firebase_core.iml" group="android/firebase_core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1337595993/location.iml" filepath="$PROJECT_DIR$/.idea/modules/-1337595993/location.iml" group="android/location" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/null.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/null.iml" group="android/permission_handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/permission_handler.iml" group="android/permission_handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/permission_handler-5.0.1+1-android-permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/permission_handler-5.0.1+1-android-permission_handler.iml" group="android/permission_handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-343551556/pub.dartlang.org-cloud_firestore-0.14.0+2-android-cloud_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/-343551556/pub.dartlang.org-cloud_firestore-0.14.0+2-android-cloud_firestore.iml" group="android/cloud_firestore" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1891152893/pub.dartlang.org-firebase_core-0.5.0-android-firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/1891152893/pub.dartlang.org-firebase_core-0.5.0-android-firebase_core.iml" group="android/firebase_core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/pub.dartlang.org-permission_handler-5.0.1+1-android-permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/pub.dartlang.org-permission_handler-5.0.1+1-android-permission_handler.iml" group="android/permission_handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/pub.dartlang.org-permission_handler-5.0.1+1-android-permission_handler~1.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/pub.dartlang.org-permission_handler-5.0.1+1-android-permission_handler~1.iml" group="android/permission_handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/pub.dartlang.org-permission_handler-5.0.1+1-android-permission_handler~2.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/pub.dartlang.org-permission_handler-5.0.1+1-android-permission_handler~2.iml" group="android/permission_handler" />
     </modules>
   </component>
 </project>

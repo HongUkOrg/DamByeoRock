@@ -25,9 +25,9 @@ class MainLocationChanged extends MainState {
   List<Object> get props => [lati, long];
 }
 class MainLandmarkTapped extends MainState {
-  final LatLng latLng;
+  final LandmarkModel landmarkModel;
 
-  MainLandmarkTapped(this.latLng);
+  MainLandmarkTapped(this.landmarkModel);
 
-  List<Object> get props => [latLng];
+  List<Object> get props => [landmarkModel];
 }

@@ -7,6 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wall/WallRepository/WallRepository.dart';
+import 'package:wall/landmark/model/landmark.dart';
 import 'package:wall/logger/Logger.dart';
 
 part 'main_state.dart';
@@ -31,23 +32,24 @@ class MainCubit extends Cubit<MainState> {
 
   void fetchLandmark() {
     wallRepository.fetchLandmark()
-        .then((Set<LatLng> latLngs) => {
-          latLngs.forEach((latLng) {
-            Logger.logD('add latLng ${latLng.latitude}, ${latLng.longitude}');
+        .then((Set<LandmarkModel> landmarks) => {
+          landmarks.forEach((landmark) {
+            Logger.logD('add latLng ${landmark.latLng.latitude}, ${landmark.latLng.longitude}');
             markers.add(Marker(
-                markerId: MarkerId('newLandmark'),
-                position: latLng,
+                markerId: MarkerId(landmark.name),
+                position: landmark.latLng,
                 icon: BitmapDescriptor.defaultMarkerWithHue(300),
-                onTap: () => press(latLng),
+                onTap: () => press(landmark),
             ));
+            print('current markers ${markers.length}');
             emit(MainLandmarkUpdated(markers));
           })
         });
   }
 
-  void press(LatLng latLng) {
-    Logger.logD('marker tapped ${latLng}');
-    emit(MainLandmarkTapped(latLng));
+  void press(LandmarkModel landmarkModel) {
+    Logger.logD('marker tapped ${landmarkModel}');
+    emit(MainLandmarkTapped(landmarkModel));
   }
 
   void trackLocation() {

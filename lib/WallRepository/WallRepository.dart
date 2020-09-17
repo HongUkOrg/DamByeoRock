@@ -1,21 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:wall/landmark/model/landmark.dart';
 
 class WallRepository {
 
   FirebaseFirestore fireStore = FirebaseFirestore.instance;
 
-  Future<Set<LatLng>> fetchLandmark() async {
-    Set<LatLng> latLanList = {};
+  Future<Set<LandmarkModel>> fetchLandmark() async {
+    Set<LandmarkModel> landmarks = {};
     await fireStore.collection('landmark')
         .get()
         .then((QuerySnapshot querySnapshot) => {
           querySnapshot.docs.forEach((element) {
-            print('value from firestore $element');
-            latLanList.add(LatLng(element.get('lat'), element.get('lng')));
+            print('value from firestore ${element.get('name')}');
+            landmarks.add(LandmarkModel(element.get('name'), LatLng(element.get('lat'), element.get('lng'))));
           })
         });
-    return latLanList;
+    return landmarks;
   }
 
   Future<void> add() {

@@ -20,7 +20,7 @@ class MainViewState extends State<MainView> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(37.560041, 126.936924),
     zoom: 14.4746,
   );
 
@@ -47,10 +47,11 @@ class MainViewState extends State<MainView> {
         }
         if (state is MainLandmarkUpdated) {
           _markers = state.markers;
+          print('marker update ${_markers.length}');
         }
         if (state is MainLandmarkTapped) {
           Navigator.push(context, MaterialPageRoute(
-            builder: (context) => LandmarkView(state.latLng)
+            builder: (context) => LandmarkView(state.landmarkModel)
           ));
         }
       },
@@ -135,7 +136,7 @@ class MainViewState extends State<MainView> {
   }
 
   Future<void> _goToTheLake() async {
-    // final GoogleMapController controller = await _controller.future;
+    final GoogleMapController controller = await _controller.future;
     // controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 
@@ -146,6 +147,6 @@ class MainViewState extends State<MainView> {
         target: LatLng(lati, long)
     );
     Logger.logD('animate camera');
-    controller.animateCamera(CameraUpdate.newCameraPosition(currentPosition));
+    // controller.animateCamera(CameraUpdate.newCameraPosition(currentPosition));
   }
 }

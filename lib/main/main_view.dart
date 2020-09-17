@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wall/WallRepository/WallRepository.dart';
+import 'package:wall/landmark/landmark_view.dart';
+import 'package:wall/logger/Logger.dart';
 import 'package:wall/main/main_cubit.dart';
 
 class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => MainViewState();
+
+
 }
 
 class MainViewState extends State<MainView> {
@@ -29,15 +33,25 @@ class MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<MainCubit>(context);
+    Set<Marker> _markers = {};
 
     return BlocConsumer<MainCubit, MainState>(
       listener: (context, state) {
         print('listen state ${state.runtimeType}');
         if (state is MainLocationPermissionGranted) {
+          cubit.fetchLandmark();
           cubit.trackLocation();
         }
         if (state is MainLocationChanged) {
           _updatePosition(state.lati, state.long);
+        }
+        if (state is MainLandmarkUpdated) {
+          _markers = state.markers;
+        }
+        if (state is MainLandmarkTapped) {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => LandmarkView(state.latLng)
+          ));
         }
       },
       builder: (context, state) {
@@ -53,12 +67,14 @@ class MainViewState extends State<MainView> {
                   _controller.complete(controller);
                   cubit.requestLocationPermission();
                 },
+                markers: _markers,
               ),
               Builder(
                 builder: (context) {
                   if (state is MainInitial) {
                     return Center(
-                      child: Text('plz grant permission',
+                      child: Text(
+                        'plz grant permission',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -70,12 +86,47 @@ class MainViewState extends State<MainView> {
                     return Center();
                   }
                 },
-              )
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 100,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      height: 50,
+                      child: Center(
+                        child: Text(
+                          '담벼락 세계에 오신걸 환영합니다!',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
           floatingActionButton: FloatingActionButton.extended(
             onPressed: _goToTheLake,
-            label: Text('To the lake!'),
+            label: Text('Memo'),
             icon: Icon(Icons.directions_boat),
           ),
         );
@@ -86,8 +137,6 @@ class MainViewState extends State<MainView> {
   Future<void> _goToTheLake() async {
     // final GoogleMapController controller = await _controller.future;
     // controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-    final wallRepository = WallRepository();
-    wallRepository.add();
   }
 
   Future<void> _updatePosition(double lati, double long) async {
@@ -96,6 +145,7 @@ class MainViewState extends State<MainView> {
         zoom: 18,
         target: LatLng(lati, long)
     );
+    Logger.logD('animate camera');
     controller.animateCamera(CameraUpdate.newCameraPosition(currentPosition));
   }
 }

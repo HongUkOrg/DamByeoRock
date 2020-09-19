@@ -1,4 +1,4 @@
-part of 'main_cubit.dart';
+part of 'MainCubit.dart';
 
 abstract class MainState extends Equatable {
   @override

@@ -30,6 +30,45 @@
     <output url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/intermediates/javac/debug/classes" />
     <output-test url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/intermediates/javac/debugUnitTest/classes" />
     <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/aidl_source_output_dir/debug/compileDebugAidl/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/aidl_source_output_dir/debug/compileDebugAidl/out" isTestSource="false" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/aidl_source_output_dir/debugAndroidTest/compileDebugAndroidTestAidl/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/aidl_source_output_dir/debugAndroidTest/compileDebugAndroidTestAidl/out" isTestSource="true" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debug/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debugAndroidTest/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debugAndroidTest/out" isTestSource="true" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debugUnitTest/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debugUnitTest/out" isTestSource="true" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out" isTestSource="false" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/renderscript_source_output_dir/debugAndroidTest/compileDebugAndroidTestRenderscript/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/renderscript_source_output_dir/debugAndroidTest/compileDebugAndroidTestRenderscript/out" isTestSource="true" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/resValues/androidTest/debug">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/resValues/androidTest/debug" type="java-test-resource" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/resValues/debug">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/resValues/debug" type="java-resource" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/rs/androidTest/debug">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/rs/androidTest/debug" type="java-test-resource" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/rs/debug">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/rs/debug" type="java-resource" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/androidTest/debug">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/debug">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
+    </content>
     <content url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.9/android">
       <sourceFolder url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.9/android/src/debug/res" type="java-resource" />
       <sourceFolder url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.9/android/src/debug/resources" type="java-resource" />
@@ -74,51 +113,12 @@
       <sourceFolder url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.9/android/src/test/rs" isTestSource="true" />
       <sourceFolder url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.9/android/src/test/shaders" isTestSource="true" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/aidl_source_output_dir/debug/compileDebugAidl/out">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/aidl_source_output_dir/debug/compileDebugAidl/out" isTestSource="false" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/aidl_source_output_dir/debugAndroidTest/compileDebugAndroidTestAidl/out">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/aidl_source_output_dir/debugAndroidTest/compileDebugAndroidTestAidl/out" isTestSource="true" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debug/out">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debugAndroidTest/out">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debugAndroidTest/out" isTestSource="true" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debugUnitTest/out">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/ap_generated_sources/debugUnitTest/out" isTestSource="true" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out" isTestSource="false" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/renderscript_source_output_dir/debugAndroidTest/compileDebugAndroidTestRenderscript/out">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/renderscript_source_output_dir/debugAndroidTest/compileDebugAndroidTestRenderscript/out" isTestSource="true" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/resValues/androidTest/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/resValues/androidTest/debug" type="java-test-resource" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/resValues/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/resValues/debug" type="java-resource" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/rs/androidTest/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/rs/androidTest/debug" type="java-test-resource" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/rs/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/res/rs/debug" type="java-resource" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/androidTest/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/debug">
-      <sourceFolder url="file://$MODULE_DIR$/../../../../build/flutter_plugin_android_lifecycle/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
-    </content>
     <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.mockito:mockito-core:1.10.19@jar" level="project" />
-    <orderEntry type="library" name="Gradle: io.flutter:flutter_embedding_debug:1.0.0-ee76268252c22f5c11e82a7b87423ca3982e51a7@jar" level="project" />
+    <orderEntry type="library" name="Gradle: io.flutter:flutter_embedding_debug:1.0.0-d1bc06f032f9d6c148ea6b96b48261d6f545004f@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-common-java8:2.2.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-common:2.2.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.arch.core:core-common:2.1.0@jar" level="project" />

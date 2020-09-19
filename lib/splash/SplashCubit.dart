@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
-part 'splash_state.dart';
+part 'SplashState.dart';
 
 class SplashCubit extends Cubit<SplashState> {
   SplashCubit() : super(SplashInitial());

@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wall/simple_bloc_observer.dart';
-import 'package:wall/splash/splash_cubit.dart';
+import 'package:wall/splash/SplashCubit.dart';
 
-import 'splash/splash_view.dart';
+import 'splash/SplashView.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();

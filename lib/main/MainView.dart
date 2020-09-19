@@ -4,10 +4,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:wall/WallRepository/WallRepository.dart';
-import 'package:wall/landmark/landmark_view.dart';
+import 'package:wall/landmark/LandmarkCubit.dart';
+import 'package:wall/landmark/LandmarkView.dart';
 import 'package:wall/logger/Logger.dart';
-import 'package:wall/main/main_cubit.dart';
+import 'package:wall/main/MainCubit.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -51,7 +51,10 @@ class MainViewState extends State<MainView> {
         }
         if (state is MainLandmarkTapped) {
           Navigator.push(context, MaterialPageRoute(
-            builder: (context) => LandmarkView(state.landmarkModel)
+            builder: (context) => BlocProvider<LandmarkCubit>(
+              create: (context) => LandmarkCubit(state.landmarkModel)..fetchMemo(),
+              child: LandmarkView(state.landmarkModel),
+            ),
           ));
         }
       },
@@ -146,7 +149,6 @@ class MainViewState extends State<MainView> {
         zoom: 18,
         target: LatLng(lati, long)
     );
-    Logger.logD('animate camera');
     // controller.animateCamera(CameraUpdate.newCameraPosition(currentPosition));
   }
 }

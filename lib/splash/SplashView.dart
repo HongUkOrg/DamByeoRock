@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wall/main/main_cubit.dart';
-import 'package:wall/main/main_view.dart';
-import 'package:wall/splash/splash_cubit.dart';
+import 'package:wall/main/MainCubit.dart';
+import 'package:wall/main/MainView.dart';
+import 'package:wall/splash/SplashCubit.dart';
 
 class SplashView extends StatelessWidget {
   @override

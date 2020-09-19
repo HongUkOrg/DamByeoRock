@@ -1,4 +1,4 @@
-part of 'splash_cubit.dart';
+part of 'SplashCubit.dart';
 
 abstract class SplashState {
 }

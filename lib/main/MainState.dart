@@ -1,4 +1,4 @@
-part of 'main_cubit.dart';
+part of 'MainCubit.dart';
 
 abstract class MainState extends Equatable {
   @override
@@ -25,9 +25,9 @@ class MainLocationChanged extends MainState {
   List<Object> get props => [lati, long];
 }
 class MainLandmarkTapped extends MainState {
-  final LatLng latLng;
+  final LandmarkModel landmarkModel;
 
-  MainLandmarkTapped(this.latLng);
+  MainLandmarkTapped(this.landmarkModel);
 
-  List<Object> get props => [latLng];
+  List<Object> get props => [landmarkModel];
 }

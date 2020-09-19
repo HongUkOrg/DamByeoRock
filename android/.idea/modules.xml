@@ -22,6 +22,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1891152893/io.flutter.plugins.firebase.core-firebase_core.iml" filepath="$PROJECT_DIR$/.idea/modules/1891152893/io.flutter.plugins.firebase.core-firebase_core.iml" group="android/firebase_core" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1337595993/location.iml" filepath="$PROJECT_DIR$/.idea/modules/-1337595993/location.iml" group="android/location" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/null.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/null.iml" group="android/permission_handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1107369918/path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/-1107369918/path_provider.iml" group="android/path_provider" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/permission_handler.iml" group="android/permission_handler" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1920358067/permission_handler-5.0.1+1-android-permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1920358067/permission_handler-5.0.1+1-android-permission_handler.iml" group="android/permission_handler" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-343551556/pub.dartlang.org-cloud_firestore-0.14.0+2-android-cloud_firestore.iml" filepath="$PROJECT_DIR$/.idea/modules/-343551556/pub.dartlang.org-cloud_firestore-0.14.0+2-android-cloud_firestore.iml" group="android/cloud_firestore" />

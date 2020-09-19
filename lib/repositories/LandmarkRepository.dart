@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:wall/logger/Logger.dart';
+import 'package:wall/utils/Utils.dart';
 
 class LandmarkRepository {
   LandmarkRepository();
@@ -11,7 +11,7 @@ class LandmarkRepository {
 
     List<String> memoList = [];
     await fireStore.collection('$landmarkName')
-      .orderBy('date')
+      .orderBy('date', descending: true)
       .limit(10)
       .get()
       .then((QuerySnapshot querySnapshot) => {

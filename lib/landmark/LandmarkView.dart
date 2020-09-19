@@ -4,10 +4,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wall/landmark/LandmarkCubit.dart';
 import 'package:wall/landmark/model/LandmarkModel.dart';
-import 'package:wall/logger/Logger.dart';
+import 'package:wall/utils/Utils.dart';
 
 class LandmarkView extends StatelessWidget {
 
@@ -75,6 +74,7 @@ class LandmarkView extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListView(
+                    reverse: true,
                     children: getMemoTile(_memoList),
                   ),
                 ),

@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:wall/landmark/model/LandmarkModel.dart';
-import 'package:wall/logger/Logger.dart';
 import 'package:wall/repositories/Repositories.dart';
+import 'package:wall/utils/Utils.dart';
 
 part 'LandmarkState.dart';
 
@@ -31,6 +31,6 @@ class LandmarkCubit extends Cubit<LandmarkState> {
   void addMemo() async {
     final response = await landmarkRepository
         .addMemo(landmarkName: landmarkModel.name, memo: this.memo);
-    fetchMemo();
+    if (response) fetchMemo();
   }
 }

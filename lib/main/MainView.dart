@@ -6,8 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wall/landmark/LandmarkCubit.dart';
 import 'package:wall/landmark/LandmarkView.dart';
-import 'package:wall/logger/Logger.dart';
 import 'package:wall/main/MainCubit.dart';
+import 'wigets/MainWidgets.dart';
+import 'package:wall/utils/Utils.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -39,23 +40,19 @@ class MainViewState extends State<MainView> {
       listener: (context, state) {
         print('listen state ${state.runtimeType}');
         if (state is MainLocationPermissionGranted) {
-          cubit.fetchLandmark();
+          cubit.initMap(context);
           cubit.trackLocation();
-        }
-        if (state is MainLocationChanged) {
-          _updatePosition(state.lati, state.long);
         }
         if (state is MainLandmarkUpdated) {
           _markers = state.markers;
-          print('marker update ${_markers.length}');
         }
         if (state is MainLandmarkTapped) {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) => BlocProvider<LandmarkCubit>(
-              create: (context) => LandmarkCubit(state.landmarkModel)..fetchMemo(),
-              child: LandmarkView(state.landmarkModel),
-            ),
-          ));
+          // Navigator.push(context, MaterialPageRoute(
+          //   builder: (context) => BlocProvider<LandmarkCubit>(
+          //     create: (context) => LandmarkCubit(state.landmarkModel)..fetchMemo(),
+          //     child: LandmarkView(state.landmarkModel),
+          //   ),
+          // ));
         }
       },
       builder: (context, state) {
@@ -91,56 +88,28 @@ class MainViewState extends State<MainView> {
                   }
                 },
               ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 100,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 50),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                            offset: Offset(0, 1), // changes position of shadow
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      height: 50,
-                      child: Center(
-                        child: Text(
-                          '담벼락 세계에 오신걸 환영합니다!',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              MainContentsView(),
             ],
           ),
           floatingActionButton: FloatingActionButton.extended(
-            onPressed: _goToTheLake,
-            label: Text('Memo'),
-            icon: Icon(Icons.directions_boat),
+            onPressed: () => _goToLandmark(cubit),
+            label: Text('입장'),
+            icon: Icon(Icons.account_balance),
           ),
         );
       },
     );
   }
 
-  Future<void> _goToTheLake() async {
+  Future<void> _goToLandmark(MainCubit cubit) async {
     final GoogleMapController controller = await _controller.future;
     // controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => BlocProvider<LandmarkCubit>(
+        create: (context) => LandmarkCubit(cubit.currentLandmark)..fetchMemo(),
+        child: LandmarkView(cubit.currentLandmark),
+      ),
+    ));
   }
 
   Future<void> _updatePosition(double lati, double long) async {

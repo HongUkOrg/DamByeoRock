@@ -7,7 +7,7 @@ class LandmarkRepository {
   final FirebaseFirestore fireStore = FirebaseFirestore.instance;
 
   Future<List<String>> fetchMemo({String landmarkName}) async {
-    Logger.logD('fetch memo $landmarkName');
+    Logger.D('fetch memo $landmarkName');
 
     List<String> memoList = [];
     await fireStore.collection('$landmarkName')

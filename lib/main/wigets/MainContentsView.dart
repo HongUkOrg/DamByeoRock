@@ -19,10 +19,10 @@ class _MainContentsViewState extends State<MainContentsView> {
     return BlocConsumer<MainCubit, MainState>(
       listener: (context, state) {
         if (state is MainLocationChanged) {
-          Logger.logD('distance updated!! ${state.distance}');
+          Logger.D('distance updated!! ${state.distance}');
           _landmarkName = state.currentLandmark.name;
           _distance = state.distance.toInt();
-          Logger.logD('distance updated after!! ${_distance}');
+          Logger.D('distance updated after!! ${_distance}');
         }
       },
       builder: (context, state) {

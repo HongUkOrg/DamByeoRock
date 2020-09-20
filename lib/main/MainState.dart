@@ -26,6 +26,8 @@ class MainLocationChanged extends MainState {
   @override
   List<Object> get props => [lati, long, distance, currentLandmark];
 }
+
+// FIXME: do nothing now
 class MainLandmarkTapped extends MainState {
   final LandmarkModel landmarkModel;
 

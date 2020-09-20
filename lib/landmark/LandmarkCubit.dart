@@ -20,7 +20,7 @@ class LandmarkCubit extends Cubit<LandmarkState> {
     final memoList = await landmarkRepository.fetchMemo(landmarkName: landmarkModel.name);
     this.memoList = memoList;
 
-    Logger.logD('memo list fetched ${memoList}');
+    Logger.D('memo list fetched ${memoList}');
     emit(LandmarkUpdated(memoList));
   }
 

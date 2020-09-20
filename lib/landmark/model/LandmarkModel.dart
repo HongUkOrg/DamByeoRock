@@ -5,5 +5,5 @@ class LandmarkModel {
   String name;
   LatLng latLng;
 
-  LandmarkModel(this.name, this.latLng);
+  LandmarkModel({this.name, this.latLng});
 }

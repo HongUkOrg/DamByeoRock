@@ -44,6 +44,7 @@ class MainViewState extends State<MainView> {
           cubit.trackLocation();
         }
         if (state is MainLandmarkUpdated) {
+          Logger.D('bleo: update markers ${state.markers}');
           _markers = state.markers;
         }
         if (state is MainLandmarkTapped) {

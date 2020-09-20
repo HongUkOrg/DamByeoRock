@@ -102,7 +102,7 @@ class MainCubit extends Cubit<MainState> {
 
   Future<void> _createMarkerImageFromAsset(BuildContext context) async {
     if (_landmarkIcon == null) {
-      await AssetExtension.getBitmapDescriptorFromAssetBytes('assets/ic_brick_brown.png', 100)
+      await AssetExtension.getBitmapDescriptorFromAssetBytes('assets/ic_brick_brown.png', 130)
           .then((value) => _landmarkIcon = value);
     }
   }

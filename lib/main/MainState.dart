@@ -6,7 +6,9 @@ abstract class MainState extends Equatable {
 }
 
 class MainInitial extends MainState {}
+
 class MainLocationPermissionGranted extends MainState {}
+
 class MainLandmarkUpdated extends MainState {
   final Set<Marker> markers;
 
@@ -15,6 +17,7 @@ class MainLandmarkUpdated extends MainState {
   @override
   List<Object> get props => [markers];
 }
+
 class MainLocationChanged extends MainState {
   final double lati;
   final double long;

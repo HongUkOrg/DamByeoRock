@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wall/landmark/LandmarkCubit.dart';
-import 'package:wall/landmark/LandmarkMemoView.dart';
+import 'package:wall/landmark/LandmarkView.dart';
 import 'package:wall/landmark/LandmarkView.dart';
 import 'package:wall/main/MainCubit.dart';
 import 'wigets/MainWidgets.dart';
@@ -35,7 +35,7 @@ class MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<MainCubit>(context);
+    final MainCubitType cubit = BlocProvider.of<MainCubit>(context);
     Set<Marker> _markers = {};
 
     return BlocConsumer<MainCubit, MainState>(
@@ -111,7 +111,7 @@ class MainViewState extends State<MainView> {
       builder: (context) => BlocProvider<LandmarkCubit>(
         create: (context) => LandmarkCubit(cubit.currentLandmark)..fetchMemo(),
         // child: LandmarkView(cubit.currentLandmark),
-        child: LandmarkMemoView(cubit.currentLandmark),
+        child: LandmarkView(cubit.currentLandmark),
       ),
     ));
   }

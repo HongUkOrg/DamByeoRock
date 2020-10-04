@@ -1,40 +1,56 @@
-
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:wall/landmark/LandmarkCubit.dart';
 import 'package:wall/landmark/model/LandmarkModel.dart';
 import 'package:wall/landmark/model/MemoModel.dart';
 import 'package:wall/utils/Utils.dart';
+import 'model/LandmarkModels.dart';
+import 'widgets/LandmarkWidgets.dart';
 
-class LandmarkView extends StatelessWidget {
+class LandmarkView extends StatefulWidget {
 
   LandmarkView(this.landmarkModel);
 
   // MARK: - Properties
-  LandmarkModel landmarkModel;
-  List<MemoModel> _memoList = [];
+  final LandmarkModel landmarkModel;
+
+  @override
+  _LandmarkViewState createState() => _LandmarkViewState();
+}
+
+class _LandmarkViewState extends State<LandmarkView> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<LandmarkCubit>(context);
-    final GlobalKey<FormState> memoKey = GlobalKey<FormState>();
+
+    // MARK: - Properties
+    final LandmarkCubitType cubit = BlocProvider.of<LandmarkCubit>(context);
+    final GlobalKey<FormState> textFormKey = GlobalKey<FormState>(debugLabel: 'hi');
+    final TextEditingController _textEditingController = TextEditingController();
+
+    // Mark: - Dynamic Properties
+    List<MemoModel> _memoList = [];
+    var _memoViewType = MemoViewType.memo;
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.note),
         onPressed: () {
-          if (memoKey.currentState.validate()){
-            // cubit.addMemo();
+          if (textFormKey.currentState.validate()){
+            cubit.addMemo(text: _textEditingController.text);
+            FocusScope.of(context).requestFocus(FocusNode());
+            _textEditingController.clear();
           }
         },
       ),
       body: BlocConsumer<LandmarkCubit, LandmarkState>(
         listener: (context, state) {
           if (state is LandmarkUpdated) {
+            Logger.D('${this.toString()} LandmarkUpdated');
             _memoList = state.memoList;
+          }
+          if (state is LandmarkMemoViewTypeUpdated) {
+            _memoViewType = state.memoViewType;
           }
         },
         builder: (context, state) {
@@ -49,53 +65,9 @@ class LandmarkView extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20),
-                Center(
-                  child: Container(
-                    width: 100,
-                    height: 50,
-                    child: Center(
-                        child: Icon(Icons.home)
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 100,
-                  padding: EdgeInsets.all(20),
-                  child: Center(
-                    child: Text(
-                      '${landmarkModel.name} 담벼락',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: Colors.blue
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    reverse: true,
-                    children: getMemoTile(_memoList),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 20, right: 80),
-                  height: 60,
-                  child: Form(
-                    key: memoKey,
-                    autovalidate: true,
-                    child: TextFormField(
-                      validator: (text) {
-                        return text.trim().isEmpty ?
-                        '메모를 입력해주세요' : null;
-                      },
-                      decoration: InputDecoration(
-                        hintText: '글 남기기',
-                      ),
-                    ),
-                  ),
-                )
+                LandmarkHeaderView(landmarkName: widget.landmarkModel.name),
+                LandmarkMemoView(memoViewType: _memoViewType, memoList: _memoList),
+                LandmarkInputView(textFormKey: textFormKey, textEditingController: _textEditingController)
               ],
             ),
           );
@@ -103,31 +75,4 @@ class LandmarkView extends StatelessWidget {
       ),
     );
   }
-
-  List<ListTile> getMemoTile(List<MemoModel> memoList) {
-    List<ListTile> result = [];
-    memoList.forEach((element) {
-      result.add(ListTile(
-        title: Text(element.memo,
-          style: getRandomElement(_googleFonts),
-        ),
-      ));
-    });
-    return result;
-  }
-
-  T getRandomElement<T>(List<T> list) {
-    final random = new Random();
-    var i = random.nextInt(list.length);
-    return list[i];
-  }
-
-
-  List<TextStyle> _googleFonts = [
-    GoogleFonts.lato(fontWeight: FontWeight.w300, fontSize: 15),
-    GoogleFonts.actor(fontWeight: FontWeight.w300, fontSize: 15),
-    GoogleFonts.aBeeZee(fontWeight: FontWeight.w300, fontSize: 15),
-    GoogleFonts.blackHanSans(fontWeight: FontWeight.w300, fontSize: 15),
-    GoogleFonts.thasadith(fontWeight: FontWeight.w300, fontSize: 15),
-  ];
 }

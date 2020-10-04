@@ -10,20 +10,29 @@ import 'package:wall/utils/Utils.dart';
 
 part 'MainState.dart';
 
-class MainCubit extends Cubit<MainState> {
+abstract class MainCubitType {
+  // MARK: - Methods
+  void requestLocationPermission();
+  void initMap(BuildContext context);
+  void trackLocation();
+  void updateLocation();
+}
+
+class MainCubit extends Cubit<MainState> implements MainCubitType {
   MainCubit() : super(MainInitial());
 
+  // MARK: - Repository
   final WallRepository wallRepository = WallRepository();
+
+  // MARK: - Map
   Set<Marker> markers = {};
-  bool _locationPermissionGranted = false;
   BitmapDescriptor _landmarkIcon;
+  // MARK: - Properties
 
-  Set<LandmarkModel> landmarkSet = {};
-  LandmarkModel currentLandmark = LandmarkModel(
-    name: '연세대학교',
-    latLng: LatLng(37.560041, 126.936924)
-  );
+  bool _locationPermissionGranted = false;
+  LandmarkModel currentLandmark = LandmarkModel.defaultModel;
 
+  // MARK: - Methods
   void requestLocationPermission() async {
     final result = await Permission.location.request();
     if (result.isGranted) {
@@ -69,10 +78,8 @@ class MainCubit extends Cubit<MainState> {
       print('pls request permission before tracking current location');
       return;
     }
-
     // update location once
     updateLocation();
-
     Stream
         .periodic(Duration(seconds: 2), (_) {})
         .listen((_) => updateLocation());
@@ -90,13 +97,18 @@ class MainCubit extends Cubit<MainState> {
         );
   }
 
+
+}
+
+extension MainCubitExtensions on MainCubit {
+  // MARK: - Private Methods
   double _getDistance(Position location) {
     if (currentLandmark == null) { return 0; }
     final distance = GeolocatorPlatform.instance
         .distanceBetween(
-            currentLandmark.latLng.latitude, currentLandmark.latLng.longitude,
-            location.latitude, location.longitude
-        );
+        currentLandmark.latLng.latitude, currentLandmark.latLng.longitude,
+        location.latitude, location.longitude
+    );
     return distance;
   }
 

@@ -8,11 +8,14 @@ import 'package:wall/landmark/model/LandmarkModel.dart';
 import 'package:wall/repositories/Repositories.dart';
 import 'package:wall/utils/DeviceHelper.dart';
 import 'package:wall/utils/Utils.dart';
+import 'model/LandmarkModels.dart';
 import 'model/MemoModel.dart';
 
 part 'LandmarkState.dart';
 
 abstract class LandmarkCubitType {
+
+  // MARK: - Network
   void fetchMemo();
   void addMemo({String text});
 
@@ -20,11 +23,8 @@ abstract class LandmarkCubitType {
   void tapListModeButton();
   void tapMemoModeButton();
 
+  // MARK: - Properties
   MemoViewType memoViewType;
-}
-
-enum MemoViewType {
-  list, memo
 }
 
 class LandmarkCubit extends Cubit<LandmarkState> implements LandmarkCubitType {
@@ -66,7 +66,9 @@ class LandmarkCubit extends Cubit<LandmarkState> implements LandmarkCubitType {
     memoViewType = MemoViewType.memo;
     emit(LandmarkMemoViewTypeUpdated(memoViewType));
   }
+}
 
+extension LandmarkCubitExtensions on LandmarkCubit {
   // MARK: - Private Methods
   MemoModel _createRandomMemoModel(String memoText) {
     return MemoModel(

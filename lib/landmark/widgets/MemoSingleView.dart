@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wall/landmark/model/MemoModel.dart';
 
-class MemoView extends StatelessWidget {
+class MemoSingleView extends StatelessWidget {
 
   final MemoModel memoModel;
 
-  MemoView(this.memoModel);
+  MemoSingleView(this.memoModel);
 
   @override
   Widget build(BuildContext context) {

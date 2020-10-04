@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wall/landmark/model/MemoModel.dart';
-import 'MemoWidgets.dart';
+import 'LandmarkWidgets.dart';
 
 class MemoCardView extends StatelessWidget {
 
@@ -22,7 +22,7 @@ class MemoCardView extends StatelessWidget {
           width: 130,
           height: 130,
           decoration: index == _memoList.length - 1 ? BoxDecoration(color: Colors.blueAccent) : null,
-          child: MemoView(memoModel),
+          child: MemoSingleView(memoModel),
         ),
       ) ;
       result.add(memoView);

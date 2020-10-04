@@ -65,7 +65,7 @@ class MainViewState extends State<MainView> {
               GoogleMap(
                 mapType: MapType.normal,
                 myLocationEnabled: true,
-                myLocationButtonEnabled: true,
+                myLocationButtonEnabled: false,
                 initialCameraPosition: _kGooglePlex,
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);

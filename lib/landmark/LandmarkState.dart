@@ -17,3 +17,12 @@ class LandmarkUpdated extends LandmarkState {
   @override
   List<Object> get props => [memoList];
 }
+
+class LandmarkMemoViewTypeUpdated extends LandmarkState {
+  final MemoViewType memoViewType;
+
+  LandmarkMemoViewTypeUpdated(this.memoViewType);
+
+  @override
+  List<Object> get props => [memoViewType];
+}

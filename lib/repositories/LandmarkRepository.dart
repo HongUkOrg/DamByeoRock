@@ -1,10 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:wall/landmark/model/MemoModel.dart';
-import 'package:wall/landmark/widgets/MemoView.dart';
 import 'package:wall/utils/Utils.dart';
 
-class LandmarkRepository {
+abstract class LandmarkRepositoryType {
+  Future<List<MemoModel>> fetchMemo({String landmarkName});
+  Future<bool> addMemo({String landmarkName, MemoModel memoModel});
+}
+
+class LandmarkRepository implements LandmarkRepositoryType {
   LandmarkRepository();
 
   final FirebaseFirestore fireStore = FirebaseFirestore.instance;

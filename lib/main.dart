@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wall/simple_bloc_observer.dart';
 import 'package:wall/splash/SplashCubit.dart';
+import 'package:wall/utils/Utils.dart';
 
 import 'splash/SplashView.dart';
 
@@ -21,7 +22,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightGreen,
+        accentColor: Colors.lightGreen,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.lightGreen
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(

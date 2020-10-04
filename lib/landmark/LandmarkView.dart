@@ -87,7 +87,6 @@ class LandmarkView extends StatelessWidget {
                     autovalidate: true,
                     child: TextFormField(
                       validator: (text) {
-                        cubit.updateMemo(text);
                         return text.trim().isEmpty ?
                         '메모를 입력해주세요' : null;
                       },

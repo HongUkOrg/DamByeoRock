@@ -55,7 +55,7 @@ class _MainContentsViewState extends State<MainContentsView> {
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue
+                            color: Colors.lightGreen
                         ),
                       ),
                     ),

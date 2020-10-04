@@ -10,7 +10,7 @@ abstract class LandmarkState extends Equatable {
 class LandmarkInitial extends LandmarkState {}
 
 class LandmarkUpdated extends LandmarkState {
-  final List<String> memoList;
+  final List<MemoModel> memoList;
 
   LandmarkUpdated(this.memoList);
 

@@ -7,27 +7,37 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:wall/landmark/LandmarkCubit.dart';
 import 'package:wall/landmark/model/LandmarkModel.dart';
 import 'package:wall/landmark/model/MemoModel.dart';
+import 'package:wall/utils/DeviceHelper.dart';
 import 'package:wall/utils/Utils.dart';
 
-class LandmarkView extends StatelessWidget {
+import 'widgets/MemoView.dart';
 
-  LandmarkView(this.landmarkModel);
+class LandmarkMemoView extends StatefulWidget {
+
+  LandmarkMemoView(this.landmarkModel);
 
   // MARK: - Properties
   LandmarkModel landmarkModel;
+
+  @override
+  _LandmarkMemoViewState createState() => _LandmarkMemoViewState();
+}
+
+class _LandmarkMemoViewState extends State<LandmarkMemoView> {
   List<MemoModel> _memoList = [];
 
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<LandmarkCubit>(context);
-    final GlobalKey<FormState> memoKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> globalKey = GlobalKey<FormState>(debugLabel: 'hi');
+    final TextEditingController _textEditingController = TextEditingController();
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.note),
         onPressed: () {
-          if (memoKey.currentState.validate()){
-            // cubit.addMemo();
+          if (globalKey.currentState.validate()){
+            cubit.addMemo();
           }
         },
       ),
@@ -39,6 +49,7 @@ class LandmarkView extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is LandmarkInitial) {
+            cubit.initDeviceHelper(context);
             return Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.blue,
@@ -63,7 +74,7 @@ class LandmarkView extends StatelessWidget {
                   padding: EdgeInsets.all(20),
                   child: Center(
                     child: Text(
-                      '${landmarkModel.name} 담벼락',
+                      '${widget.landmarkModel.name} 담벼락',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -74,16 +85,15 @@ class LandmarkView extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: ListView(
-                    reverse: true,
-                    children: getMemoTile(_memoList),
+                  child: Stack(
+                    children: _getMemoTile(_memoList, context),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 20, right: 80),
                   height: 60,
                   child: Form(
-                    key: memoKey,
+                    key: globalKey,
                     autovalidate: true,
                     child: TextFormField(
                       validator: (text) {
@@ -105,14 +115,21 @@ class LandmarkView extends StatelessWidget {
     );
   }
 
-  List<ListTile> getMemoTile(List<MemoModel> memoList) {
-    List<ListTile> result = [];
-    memoList.forEach((element) {
-      result.add(ListTile(
-        title: Text(element.memo,
-          style: getRandomElement(_googleFonts),
+  List<Widget> _getMemoTile(List<MemoModel> memoList, BuildContext context) {
+    List<Widget> result = [];
+    memoList.forEach((memoModel) {
+      final memoView = Positioned(
+        top: memoModel.top,
+        bottom: memoModel.bottom,
+        left: memoModel.left,
+        right: memoModel.right,
+        child: Container(
+            width: 130,
+            height: 130,
+            child: MemoView(memoModel)
         ),
-      ));
+      ) ;
+      result.add(memoView);
     });
     return result;
   }
@@ -122,7 +139,6 @@ class LandmarkView extends StatelessWidget {
     var i = random.nextInt(list.length);
     return list[i];
   }
-
 
   List<TextStyle> _googleFonts = [
     GoogleFonts.lato(fontWeight: FontWeight.w300, fontSize: 15),

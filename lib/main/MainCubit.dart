@@ -30,7 +30,7 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
   // MARK: - Properties
 
   bool _locationPermissionGranted = false;
-  LandmarkModel currentLandmark = LandmarkModel.defaultModel;
+  LandmarkModel currentLandmarkModel;
 
   // MARK: - Methods
   void requestLocationPermission() async {
@@ -52,6 +52,8 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
     wallRepository.fetchLandmark()
         .map((landmarks) {
           Logger.D('map landmarks ${landmarks.length}');
+          // TODO: set default landmark model - set first model as default now
+          currentLandmarkModel = landmarks.first;
           return landmarks.map((landmark) =>
             Marker(
               markerId: MarkerId(landmark.name),
@@ -61,7 +63,7 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
               ),
               icon: _landmarkIcon,
               onTap: () {
-                currentLandmark = landmark;
+                currentLandmarkModel = landmark;
                 updateLocation();
               },
             )
@@ -92,7 +94,7 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
               lati: location.latitude,
               long: location.longitude,
               distance: _getDistance(location),
-              currentLandmark: currentLandmark
+              currentLandmark: currentLandmarkModel
           ))
         );
   }
@@ -103,10 +105,10 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
 extension MainCubitExtensions on MainCubit {
   // MARK: - Private Methods
   double _getDistance(Position location) {
-    if (currentLandmark == null) { return 0; }
+    if (currentLandmarkModel == null) { return 0; }
     final distance = GeolocatorPlatform.instance
         .distanceBetween(
-        currentLandmark.latLng.latitude, currentLandmark.latLng.longitude,
+        currentLandmarkModel.latLng.latitude, currentLandmarkModel.latLng.longitude,
         location.latitude, location.longitude
     );
     return distance;

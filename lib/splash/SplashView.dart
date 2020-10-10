@@ -11,50 +11,46 @@ class SplashView extends StatelessWidget {
   Widget build(BuildContext context) {
     // should initialize device helper once! for getting size of screen
     DeviceHelper().init(context);
-    return BlocConsumer<SplashCubit, SplashState>(
-      listener: (context, state) {
-        if (state is SplashCompleted) {
-          Navigator.pushReplacement(context, MaterialPageRoute(
-            builder: (context) => BlocProvider<MainCubit>(
-              create: (context) => MainCubit(),
-              child: MainView(),
-            ),
-            fullscreenDialog: true,
-          ));
-        }
-      },
-      builder: (context, state) {
-        return Center(
-            child: Container(
-              height: 400,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Container(
-                    width: 130,
-                    height: 130,
-                    child: Image.asset(
-                        'assets/ic_grass.png',
-                      fit: BoxFit.fill,
+    return Scaffold(
+      body: BlocConsumer<SplashCubit, SplashState>(
+        listener: (context, state) {
+          if (state is SplashCompleted) {
+            Navigator.pushReplacementNamed(context, '/main',);
+          }
+        },
+        builder: (context, state) {
+          return Center(
+              child: Container(
+                height: 400,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 50,
                     ),
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Text('풀틈',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.lightGreen,
+                    Container(
+                      width: 130,
+                      height: 130,
+                      child: Image.asset(
+                          'assets/ic_grass.png',
+                        fit: BoxFit.fill,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-        );
-      },
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text('풀틈',
+                      style: TextStyle(
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.lightGreen,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+          );
+        },
+      ),
     );
   }
 }

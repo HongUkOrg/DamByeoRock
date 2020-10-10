@@ -1,13 +1,8 @@
 
 import 'dart:async';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:wall/landmark/LandmarkCubit.dart';
-import 'package:wall/landmark/LandmarkView.dart';
-import 'package:wall/landmark/LandmarkView.dart';
 import 'package:wall/main/MainCubit.dart';
 import 'wigets/MainWidgets.dart';
 import 'package:wall/utils/Utils.dart';
@@ -15,8 +10,6 @@ import 'package:wall/utils/Utils.dart';
 class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => MainViewState();
-
-
 }
 
 class MainViewState extends State<MainView> {
@@ -107,13 +100,7 @@ class MainViewState extends State<MainView> {
   Future<void> _goToLandmark(MainCubit cubit) async {
     final GoogleMapController controller = await _controller.future;
     // controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context) => BlocProvider<LandmarkCubit>(
-        create: (context) => LandmarkCubit(cubit.currentLandmark)..fetchMemo(),
-        // child: LandmarkView(cubit.currentLandmark),
-        child: LandmarkView(cubit.currentLandmark),
-      ),
-    ));
+    Navigator.pushNamed(context, '/landmark', arguments: cubit.currentLandmarkModel);
   }
 
   Future<void> _updatePosition(double lati, double long) async {

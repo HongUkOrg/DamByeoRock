@@ -8,12 +8,6 @@ import 'model/LandmarkModels.dart';
 import 'widgets/LandmarkWidgets.dart';
 
 class LandmarkView extends StatefulWidget {
-
-  LandmarkView(this.landmarkModel);
-
-  // MARK: - Properties
-  final LandmarkModel landmarkModel;
-
   @override
   _LandmarkViewState createState() => _LandmarkViewState();
 }
@@ -65,7 +59,7 @@ class _LandmarkViewState extends State<LandmarkView> {
             child: Column(
               children: [
                 SizedBox(height: 20),
-                LandmarkHeaderView(landmarkName: widget.landmarkModel.name),
+                LandmarkHeaderView(landmarkName: cubit.landmarkModel.name),
                 LandmarkMemoView(memoViewType: _memoViewType, memoList: _memoList),
                 LandmarkInputView(textFormKey: textFormKey, textEditingController: _textEditingController)
               ],

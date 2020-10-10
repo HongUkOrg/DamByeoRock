@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -24,20 +23,21 @@ abstract class LandmarkCubitType {
   void tapMemoModeButton();
 
   // MARK: - Properties
+  LandmarkModel landmarkModel;
   MemoViewType memoViewType;
 }
 
 class LandmarkCubit extends Cubit<LandmarkState> implements LandmarkCubitType {
   LandmarkCubit(this.landmarkModel) : super(LandmarkInitial());
 
-  // MARK: - Properties
-  final LandmarkModel landmarkModel;
   final LandmarkRepositoryType landmarkRepository = LandmarkRepository();
-
   final maxHorizontalPosition = DeviceHelper.screenWidth - 150;
+
   final maxVerticalPosition = DeviceHelper.screenHeight - 400;
+  // MARK: - Properties
 
   List<MemoModel> memoList = [];
+  LandmarkModel landmarkModel;
   MemoViewType memoViewType = MemoViewType.memo;
 
   // MARK: - Methods

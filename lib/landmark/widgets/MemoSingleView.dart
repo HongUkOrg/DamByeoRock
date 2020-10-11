@@ -7,7 +7,7 @@ class MemoSingleView extends StatefulWidget {
   final MemoModel _memoModel;
   final _enableBorder;
 
-  MemoSingleView(this._memoModel, this._enableBorder);
+  const MemoSingleView(this._memoModel, this._enableBorder);
 
   @override
   _MemoSingleViewState createState() => _MemoSingleViewState(Offset(_memoModel.left, _memoModel.top));

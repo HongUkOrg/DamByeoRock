@@ -31,7 +31,7 @@ class WallNavigator {
         case '/landmark':
           return MaterialPageRoute(
             builder: (context) => BlocProvider<LandmarkCubit>(
-              create: (context) => LandmarkCubit(args)..fetchMemo(),
+              create: (context) => LandmarkCubit(args)..connectWithLandmark(),
               // child: LandmarkView(cubit.currentLandmark),
               child: LandmarkView(),
             ),

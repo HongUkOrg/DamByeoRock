@@ -4,7 +4,7 @@ import 'package:wall/landmark/model/MemoModel.dart';
 import 'package:wall/utils/Utils.dart';
 
 abstract class LandmarkRepositoryType {
-  Future<List<MemoModel>> fetchMemo({String landmarkName});
+  Stream<List<MemoModel>> fetchMemo({String landmarkName});
   Future<bool> addMemo({String landmarkName, MemoModel memoModel});
 }
 
@@ -13,15 +13,16 @@ class LandmarkRepository implements LandmarkRepositoryType {
 
   final FirebaseFirestore fireStore = FirebaseFirestore.instance;
 
-  Future<List<MemoModel>> fetchMemo({String landmarkName}) async {
+  Stream<List<MemoModel>> fetchMemo({String landmarkName}) {
     Logger.D('fetch memo $landmarkName');
 
-    List<MemoModel> memoModelList = [];
-    await fireStore.collection('$landmarkName')
+    return fireStore.collection('$landmarkName')
       .orderBy('date', descending: true)
       .limit(100)
-      .get()
-      .then((QuerySnapshot querySnapshot) => {
+      .snapshots()
+      .map((QuerySnapshot querySnapshot) {
+        Logger.D('fetchfetchfetch $landmarkName');
+        List<MemoModel> memoModelList = [];
         querySnapshot.docs.forEach((element) {
           final memoModel = MemoModel(
             memo: element.get('memo'),
@@ -30,9 +31,9 @@ class LandmarkRepository implements LandmarkRepositoryType {
             left: element.get('left'),
           );
           memoModelList.insert(0, memoModel);
-        })
-      });
-    return memoModelList;
+        });
+        return memoModelList;
+    });
   }
 
   Future<bool> addMemo({String landmarkName, MemoModel memoModel}) async {

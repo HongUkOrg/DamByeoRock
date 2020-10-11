@@ -9,6 +9,9 @@ abstract class LandmarkState extends Equatable {
 
 class LandmarkInitial extends LandmarkState {}
 
+class LandmarkUpdating extends LandmarkState {}
+class LandmarkBeforeUpdated extends LandmarkState {}
+
 class LandmarkUpdated extends LandmarkState {
   final List<MemoModel> memoList;
 

@@ -14,6 +14,8 @@ class LandmarkView extends StatefulWidget {
 
 class _LandmarkViewState extends State<LandmarkView> {
 
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -68,5 +70,13 @@ class _LandmarkViewState extends State<LandmarkView> {
         },
       ),
     );
+  }
+
+
+  @override
+  void deactivate() {
+    final LandmarkCubitType cubit = BlocProvider.of<LandmarkCubit>(context);
+    cubit.disconnectWithLandmark();
+    super.deactivate();
   }
 }

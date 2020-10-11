@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -9,13 +10,15 @@ import 'package:wall/utils/DeviceHelper.dart';
 import 'package:wall/utils/Utils.dart';
 import 'model/LandmarkModels.dart';
 import 'model/MemoModel.dart';
+import 'package:rxdart/rxdart.dart';
 
 part 'LandmarkState.dart';
 
 abstract class LandmarkCubitType {
 
   // MARK: - Network
-  void fetchMemo();
+  void connectWithLandmark();
+  void disconnectWithLandmark();
   void addMemo({String text});
 
   // MARK: - Button Actions
@@ -39,22 +42,42 @@ class LandmarkCubit extends Cubit<LandmarkState> implements LandmarkCubitType {
   List<MemoModel> memoList = [];
   LandmarkModel landmarkModel;
   MemoViewType memoViewType = MemoViewType.memo;
+  StreamSubscription<List<MemoModel>> currentConnection;
 
   // MARK: - Methods
-  void fetchMemo() async {
+  void connectWithLandmark() async {
+    currentConnection = landmarkRepository.fetchMemo(landmarkName: landmarkModel.name)
+        .listen((memoList) {
+          this.memoList = memoList;
+          Logger.D('memo list fetched :: count - ${memoList.length}');
+          if (memoList.length >= 100) {
+            emit(LandmarkBeforeUpdated());
+            emitAsync(LandmarkUpdated(memoList));
+          } else {
+            emit(LandmarkUpdated(memoList));
+          }
+        });
+  }
 
-    final memoList = await landmarkRepository.fetchMemo(landmarkName: landmarkModel.name);
-    this.memoList = memoList;
+  void disconnectWithLandmark() async {
+    currentConnection.cancel();
+  }
 
-    Logger.D('memo list fetched :: count - ${memoList.length}');
-    emit(LandmarkUpdated(memoList));
+  Future<void> emitAsync(LandmarkState state) async {
+    Stream
+      .value('')
+      .delay(Duration(microseconds: 1000))
+      .listen((event) {
+        emit(state);
+      });
   }
 
   void addMemo({String text}) async {
     MemoModel memoModel = _createRandomMemoModel(text);
+    emit(LandmarkUpdating());
     final response = await landmarkRepository
         .addMemo(landmarkName: landmarkModel.name, memoModel: memoModel);
-    if (response) fetchMemo();
+    if (response) connectWithLandmark();
   }
 
   void tapListModeButton() {

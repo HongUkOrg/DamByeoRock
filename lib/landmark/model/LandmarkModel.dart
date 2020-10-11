@@ -6,6 +6,4 @@ class LandmarkModel {
   LatLng latLng;
 
   LandmarkModel({this.name, this.latLng});
-
-  static LandmarkModel defaultModel = LandmarkModel(name: '연세대학교', latLng: LatLng(37.560041, 126.936924));
 }

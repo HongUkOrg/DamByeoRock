@@ -19,15 +19,15 @@ class MainLandmarkUpdated extends MainState {
 }
 
 class MainLocationChanged extends MainState {
-  final double lati;
-  final double long;
+  final double latitude;
+  final double longitude;
   final double distance;
   final LandmarkModel currentLandmark;
 
-  MainLocationChanged({this.lati, this.long, this.distance, this.currentLandmark});
+  MainLocationChanged({this.latitude, this.longitude, this.distance, this.currentLandmark});
 
   @override
-  List<Object> get props => [lati, long, distance, currentLandmark];
+  List<Object> get props => [latitude, longitude, distance, currentLandmark];
 }
 
 // FIXME: do nothing now

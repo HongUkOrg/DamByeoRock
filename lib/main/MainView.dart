@@ -15,16 +15,11 @@ class MainView extends StatefulWidget {
 class MainViewState extends State<MainView> {
   Completer<GoogleMapController> _controller = Completer();
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
+  static final CameraPosition initialCameraPosition = CameraPosition(
+    // Yonsei University
     target: LatLng(37.560041, 126.936924),
     zoom: 14.4746,
   );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +38,7 @@ class MainViewState extends State<MainView> {
           _markers = state.markers;
         }
         if (state is MainLandmarkTapped) {
-          // Navigator.push(context, MaterialPageRoute(
-          //   builder: (context) => BlocProvider<LandmarkCubit>(
-          //     create: (context) => LandmarkCubit(state.landmarkModel)..fetchMemo(),
-          //     child: LandmarkView(state.landmarkModel),
-          //   ),
-          // ));
+          // TODO: do anything when tapping each landmark
         }
       },
       builder: (context, state) {
@@ -59,7 +49,7 @@ class MainViewState extends State<MainView> {
                 mapType: MapType.normal,
                 myLocationEnabled: true,
                 myLocationButtonEnabled: false,
-                initialCameraPosition: _kGooglePlex,
+                initialCameraPosition: initialCameraPosition,
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
                   cubit.requestLocationPermission();
@@ -103,6 +93,7 @@ class MainViewState extends State<MainView> {
     Navigator.pushNamed(context, '/landmark', arguments: cubit.currentLandmarkModel);
   }
 
+  // TODO: update position as user's action
   Future<void> _updatePosition(double lati, double long) async {
     final GoogleMapController controller = await _controller.future;
     final currentPosition = CameraPosition(

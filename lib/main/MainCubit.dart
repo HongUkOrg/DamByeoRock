@@ -91,8 +91,8 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
     getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
         .then((location) =>
           emit(MainLocationChanged(
-              lati: location.latitude,
-              long: location.longitude,
+              latitude: location.latitude,
+              longitude: location.longitude,
               distance: _getDistance(location),
               currentLandmark: currentLandmarkModel
           ))

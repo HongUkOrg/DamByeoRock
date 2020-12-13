@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wall/main/MainCubit.dart';
+import 'package:wall/utils/ColorExtensions.dart';
 import 'wigets/MainWidgets.dart';
 import 'package:wall/utils/Utils.dart';
 
@@ -13,7 +14,6 @@ class MainView extends StatefulWidget {
 }
 
 class MainViewState extends State<MainView> {
-  Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition initialCameraPosition = CameraPosition(
     // Yonsei University
@@ -51,7 +51,7 @@ class MainViewState extends State<MainView> {
                 myLocationButtonEnabled: false,
                 initialCameraPosition: initialCameraPosition,
                 onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
+                  cubit.googleMapController.complete(controller);
                   cubit.requestLocationPermission();
                 },
                 markers: _markers,
@@ -77,29 +77,26 @@ class MainViewState extends State<MainView> {
               MainContentsView(),
             ],
           ),
-          floatingActionButton: FloatingActionButton.extended(
-            onPressed: () => _goToLandmark(cubit),
-            label: Text('입장'),
-            icon: Icon(Icons.account_balance),
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(bottom: 150),
+            child: FloatingActionButton(
+              backgroundColor: DamColors.charcoalGrey,
+              onPressed: () => cubit.animateToCurrentPosition(),
+              child: Icon(Icons.gps_fixed),
+            )
           ),
         );
       },
     );
   }
 
-  Future<void> _goToLandmark(MainCubit cubit) async {
-    final GoogleMapController controller = await _controller.future;
-    // controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-    Navigator.pushNamed(context, '/landmark', arguments: cubit.currentLandmarkModel);
-  }
-
-  // TODO: update position as user's action
-  Future<void> _updatePosition(double lati, double long) async {
-    final GoogleMapController controller = await _controller.future;
+  Future<void> _updatePosition(LatLng location) async {
+    final cubit = BlocProvider.of<MainCubit>(context);
+    final GoogleMapController controller = await cubit.googleMapController.future;
     final currentPosition = CameraPosition(
         zoom: 18,
-        target: LatLng(lati, long)
+        target: location
     );
-    // controller.animateCamera(CameraUpdate.newCameraPosition(currentPosition));
+    controller.animateCamera(CameraUpdate.newCameraPosition(currentPosition));
   }
 }

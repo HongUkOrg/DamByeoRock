@@ -7,7 +7,7 @@ class WallRepository {
 
   FirebaseFirestore fireStore = FirebaseFirestore.instance;
 
-  Stream<Set<LandmarkModel>> fetchLandmark() {
+  Stream<List<LandmarkModel>> fetchLandmark() {
     Stream<QuerySnapshot> stream = fireStore.collection('landmark').snapshots();
     return stream
         .map((querySnapshot) =>
@@ -16,7 +16,7 @@ class WallRepository {
                   name: docs.get('name'),
                   latLng: LatLng(docs.get('lat'), docs.get('lng'))
               )
-          ).toSet()
+          ).toList()
         )
         .handleError((error) => print('bleo: error!! $error'));
   }

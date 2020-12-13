@@ -4,6 +4,7 @@ import 'package:wall/landmark/LandmarkCubit.dart';
 import 'package:wall/landmark/model/LandmarkModels.dart';
 import 'package:wall/landmark/model/MemoModel.dart';
 import 'package:wall/utils/Utils.dart';
+import 'package:zoom_widget/zoom_widget.dart';
 
 import 'LandmarkWidgets.dart';
 
@@ -19,6 +20,9 @@ class LandmarkMemoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // MARK: - Properties
+    final LandmarkCubitType cubit = BlocProvider.of<LandmarkCubit>(context);
+
     return BlocBuilder<LandmarkCubit, LandmarkState>(
       builder: (context, state) {
         if (state is LandmarkBeforeUpdated) {
@@ -29,8 +33,22 @@ class LandmarkMemoView extends StatelessWidget {
             ),
           );
         }
+        print("bleo: zoom height ${(DeviceHelper.screenHeight - DeviceHelper.safeAreaInsets.top - 180) * 3.0}");
         return Expanded(
-          child: _memoViewType == MemoViewType.memo ? MemoCardView(_memoList) : MemoListView(_memoList),
+          child: Zoom(
+            zoomSensibility: 1.5,
+            centerOnScale: false,
+            opacityScrollBars: 0.2,
+            width: DeviceHelper.screenWidth * 3.0,
+            height: (DeviceHelper.screenHeight - DeviceHelper.safeAreaInsets.top - 180 - DeviceHelper.safeAreaInsets.bottom) * 3.0,
+            onScaleUpdate: (scale, zoom) {
+              cubit.scaleUpdated(scale);
+            },
+            onPositionUpdate: (offset) {
+              cubit.offsetUpdated(offset);
+            },
+            child: _memoViewType == MemoViewType.memo ? MemoCardView(_memoList) : MemoListView(_memoList),
+          ),
         );
       },
     );

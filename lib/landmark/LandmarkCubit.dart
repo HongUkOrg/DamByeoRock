@@ -21,11 +21,13 @@ abstract class LandmarkCubitType {
   void disconnectWithLandmark();
   void addMemo({String text});
 
-  // MARK: - Button Actions
   void tapListModeButton();
   void tapMemoModeButton();
+  void scaleUpdated(double scale);
+  void offsetUpdated(Offset offset);
 
   // MARK: - Properties
+  // MARK: - Button Actions
   LandmarkModel landmarkModel;
   MemoViewType memoViewType;
 }
@@ -43,6 +45,7 @@ class LandmarkCubit extends Cubit<LandmarkState> implements LandmarkCubitType {
   LandmarkModel landmarkModel;
   MemoViewType memoViewType = MemoViewType.memo;
   StreamSubscription<List<MemoModel>> currentConnection;
+  double scale = 1.0;
 
   // MARK: - Methods
   void connectWithLandmark() async {
@@ -88,6 +91,14 @@ class LandmarkCubit extends Cubit<LandmarkState> implements LandmarkCubitType {
   void tapMemoModeButton() {
     memoViewType = MemoViewType.memo;
     emit(LandmarkMemoViewTypeUpdated(memoViewType));
+  }
+
+  void scaleUpdated(double scale) {
+    this.state.scale = scale;
+  }
+
+  void offsetUpdated(Offset offset) {
+    this.state.offset = offset;
   }
 }
 

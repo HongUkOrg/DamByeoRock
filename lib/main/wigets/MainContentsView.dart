@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wall/landmark/LandmarkCubit.dart';
 import 'package:wall/main/MainCubit.dart';
+import 'package:wall/utils/ColorExtensions.dart';
 import 'package:wall/utils/Utils.dart';
+import 'MainMyRoomView.dart';
 import 'MainWidgets.dart';
 
 class MainContentsView extends StatefulWidget {
@@ -25,20 +28,14 @@ class _MainContentsViewState extends State<MainContentsView> {
         }
       },
       builder: (context, state) {
-        return Column(
-          children: [
-            SizedBox(height: 100,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: Column(
-                children: [
-                  MainHeaderView(),
-                  SizedBox(height: 50),
-                  MainLocationTrackingView(landmarkName: _landmarkName, distance: _distance)
-                ],
-              ),
-            ),
-          ],
+        return SafeArea(
+          child: Stack(
+            children: [
+              MainHeaderView(),
+              MainMyRoomView(),
+              MainBottomView(),
+            ],
+          ),
         );
       },
     );

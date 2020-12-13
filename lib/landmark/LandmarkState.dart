@@ -1,10 +1,11 @@
 part of 'LandmarkCubit.dart';
 
-@immutable
 abstract class LandmarkState extends Equatable {
+  double scale;
+  Offset offset;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [scale, offset];
 }
 
 class LandmarkInitial extends LandmarkState {}

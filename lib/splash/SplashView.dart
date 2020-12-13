@@ -38,7 +38,7 @@ class SplashView extends StatelessWidget {
                     SizedBox(
                       height: 50,
                     ),
-                    Text('풀틈',
+                    Text('담벼락',
                       style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,

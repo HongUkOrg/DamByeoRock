@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wall/utils/ColorExtensions.dart';
 
 class MainHeaderView extends StatelessWidget {
   const MainHeaderView({
@@ -7,30 +8,20 @@ class MainHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: Offset(0, 1), // changes position of shadow
-          ),
-        ],
-        borderRadius: BorderRadius.circular(25),
-      ),
-      height: 50,
-      child: Center(
-        child: Text(
-          '담벼락 세계에 오신걸 환영합니다!',
-          style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.lightGreen
+    return Column(
+      children: [
+        SizedBox(height: 33,),
+        Center(
+          child: Text(
+            '서대문구 신촌동',
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: DamColors.charcoalGrey
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

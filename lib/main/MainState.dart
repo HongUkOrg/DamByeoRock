@@ -1,6 +1,7 @@
 part of 'MainCubit.dart';
 
 abstract class MainState extends Equatable {
+
   @override
   List<Object> get props => [];
 }
@@ -16,6 +17,15 @@ class MainLandmarkUpdated extends MainState {
 
   @override
   List<Object> get props => [markers];
+}
+
+class MainLandmarkChanged extends MainState {
+  final LandmarkModel landmarkModel;
+
+  MainLandmarkChanged(this.landmarkModel);
+
+  @override
+  List<Object> get props => [landmarkModel];
 }
 
 class MainLocationChanged extends MainState {

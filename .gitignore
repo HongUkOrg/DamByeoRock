@@ -22,3 +22,5 @@ doc/api/
 *.dSYM.zip
 *.ipa
 *.ser
+
+/release_apk

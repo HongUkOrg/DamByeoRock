@@ -6,7 +6,6 @@
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.14.4" />
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.24" />
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/location_web-1.0.0" />
-      <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.33" />
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.2.1+1" />
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+3" />
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2" />
@@ -15,6 +14,7 @@
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-5.0.1+1" />
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-6.1.13" />
       <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+6" />
+      <root url="file://$PROJECT_DIR$/../plugin/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-1.0.6" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

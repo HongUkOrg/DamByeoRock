@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -26,6 +27,7 @@ abstract class MainCubitType {
   LatLng currentLocation;
   List<LandmarkModel> landmarks;
 
+  Future<void> loadMapStyle();
 }
 
 class MainCubit extends Cubit<MainState> implements MainCubitType {
@@ -59,6 +61,22 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
   void initMap(BuildContext context) {
     _createMarkerImageFromAsset(context);
     fetchLandmark();
+  }
+
+  Future<void> loadMapStyle() async {
+    final _darkModeStyle = await rootBundle.loadString('assets/map_style/temp.txt');
+    final controller = await googleMapController.future;
+    Logger.D('load map style ${_darkModeStyle}');
+    if (controller == null) {
+      Logger.D('controller in null');
+    }
+    Logger.D('controller id ${controller.mapId}');
+    controller.setMapStyle(_darkModeStyle)
+        .catchError((e) {
+      Logger.D('bleo: catch error ${e.toString()}');
+    });
+
+    Logger.D('load finished');
   }
 
   void fetchLandmark() {
@@ -103,7 +121,8 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
 
 
   void updateLocation() {
-    getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
+    Geolocator
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
         .then((location) {
           emit(MainLocationChanged(
               latitude: location.latitude,
@@ -125,6 +144,7 @@ class MainCubit extends Cubit<MainState> implements MainCubitType {
   }
 
   void animateToCurrentPosition() {
+    loadMapStyle();
     _animateCamera(currentLandmarkModel.latLng);
   }
 }

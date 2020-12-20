@@ -1,6 +1,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wall/main/MainCubit.dart';
@@ -20,6 +21,8 @@ class MainViewState extends State<MainView> {
     target: LatLng(37.560041, 126.936924),
     zoom: 14.4746,
   );
+
+  Completer<GoogleMapController> _googleMapController;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +56,9 @@ class MainViewState extends State<MainView> {
                 onMapCreated: (GoogleMapController controller) {
                   cubit.googleMapController.complete(controller);
                   cubit.requestLocationPermission();
+                  setState(() {
+                    cubit.loadMapStyle();
+                  });
                 },
                 markers: _markers,
               ),
@@ -78,12 +84,12 @@ class MainViewState extends State<MainView> {
             ],
           ),
           floatingActionButton: Padding(
-            padding: EdgeInsets.only(bottom: 150),
-            child: FloatingActionButton(
-              backgroundColor: DamColors.charcoalGrey,
-              onPressed: () => cubit.animateToCurrentPosition(),
-              child: Icon(Icons.gps_fixed),
-            )
+              padding: EdgeInsets.only(bottom: 150),
+              child: FloatingActionButton(
+                backgroundColor: DamColors.charcoalGrey,
+                onPressed: () => cubit.animateToCurrentPosition(),
+                child: Icon(Icons.gps_fixed),
+              )
           ),
         );
       },

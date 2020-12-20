@@ -24,3 +24,7 @@ doc/api/
 *.ser
 
 /release_apk
+
+.flutter-plugins
+.flutter-plugins-dependencies
+ios/.last_build_id

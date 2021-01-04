@@ -80,9 +80,9 @@ class MainViewState extends State<MainView> {
           floatingActionButton: Padding(
             padding: EdgeInsets.only(bottom: 150),
             child: FloatingActionButton(
-              backgroundColor: DamColors.charcoalGrey,
+              backgroundColor: Colors.white.withAlpha(0),
               onPressed: () => cubit.animateToCurrentPosition(),
-              child: Icon(Icons.gps_fixed),
+              child: Image.asset('assets/icPoint.png'),
             )
           ),
         );

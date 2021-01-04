@@ -18,7 +18,7 @@ class MainMyRoomView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: DamColors.shadow,
+                    color: DamColors.black20,
                     spreadRadius: 0,
                     blurRadius: 20,
                     offset: Offset(0, 2), // changes position of shadow

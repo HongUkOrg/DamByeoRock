@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wall/main/MainCubit.dart';
 import 'package:wall/main/MainView.dart';
 import 'package:wall/splash/SplashCubit.dart';
+import 'package:wall/utils/ColorExtensions.dart';
 import 'package:wall/utils/Utils.dart';
 
 class SplashView extends StatelessWidget {
@@ -29,20 +30,19 @@ class SplashView extends StatelessWidget {
                     ),
                     Container(
                       width: 130,
-                      height: 130,
                       child: Image.asset(
-                          'assets/ic_grass.png',
+                          'assets/img_ghost_yellow.png',
                         fit: BoxFit.fill,
                       ),
                     ),
                     SizedBox(
                       height: 50,
                     ),
-                    Text('담벼락',
+                    Text('꿍시렁',
                       style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
-                        color: Colors.lightGreen,
+                        color: DamColors.purpleishBlue,
                       ),
                     ),
                   ],
